@@ -1,0 +1,22 @@
+[phases.setup]
+# Setup phase: install dependencies
+packages = []
+
+[phases.build]
+# Build phase: build frontend
+commands = ["npm install", "npm run build"]
+
+[phases.start]
+# Start phase: run the server
+command = "npm start"
+
+[[services]]
+# Expose the application on PORT
+type = "tcp"
+port = "3380"
+
+env = { PORT = "3380" }
+
+[[cache]]
+# Cache node_modules to speed up builds
+paths = ["node_modules"] 
